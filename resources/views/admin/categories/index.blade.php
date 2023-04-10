@@ -39,7 +39,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Название</th>
-                                        <th>Действия</th>
+                                        <th colspan="3" class="text-center">Действия</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -50,10 +50,20 @@
                                             <td>
                                                 <a href="{{ route('admin.category.show', $category->id) }}"
                                                    class="mr-2"><i class="far fa-eye"></i></a>
+                                            </td>
+                                            <td>
                                                 <a href="{{ route('admin.category.edit', $category->id) }}"
                                                    class="text-success mr-2"><i class="fas fa-pencil-alt"></i></a>
-                                                <a href="{{ route('admin.category.delete', $category->id) }}"
-                                                   class="text-danger"><i class="fas fa-trash-alt"></i></a>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('admin.category.delete', $category->id) }}"
+                                                      method="post" class="p-0">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="border-0 bg-transparent">
+                                                        <i class="fas fa-trash-alt text-danger" role="button"></i>
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
