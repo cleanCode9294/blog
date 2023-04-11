@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Добавление Категории</h1>
+                        <h1 class="m-0">Добавление поста</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -26,16 +26,24 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{ route('admin.category.store') }}" method="POST" class="w-25">
+                        <form action="{{ route('admin.post.store') }}" method="POST">
                             @csrf
-                            <div class="form-group">
+                            <div class="form-group w-25">
                                 <label>Название</label>
-                                <input type="text" class="form-control" name="title" placeholder="Название категории">
+                                <input type="text" class="form-control" name="title" placeholder="Название поста" value="{{ old('title') }}">
                                 @error('title')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <input type="submit" class="btn btn-primary" value="Добавить">
+                            <div class="form-group">
+                                <textarea id="summernote" name="content">{{ old('content') }}</textarea>
+                                @error('content')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary" value="Добавить">
+                            </div>
                         </form>
                     </div>
                 </div>
