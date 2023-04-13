@@ -30,35 +30,32 @@
                             @csrf
                             <div class="form-group">
                                 <label>Имя</label>
-                                <input type="text" class="form-control" name="name" placeholder="Имя пользователя">
+                                <input type="text" value="{{ old('name') }}" class="form-control" name="name" placeholder="Имя пользователя">
                                 @error('name')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label>Почта</label>
-                                <input type="text" class="form-control" name="email" placeholder="Ваша почта">
+                                <input type="text" value="{{ old('email') }}" class="form-control" name="email" placeholder="Ваша почта">
                                 @error('email')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label>Пароль</label>
-                                <input type="text" class="form-control" name="password" placeholder="Ваш Пароль">
-                                @error('password')
-                                <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
+
                             <div class="form-group w-50">
-                                <label>Выберите пользователя</label>
-                                <select name=role_id" class="form-control">
-                                    @foreach($roles as $role)
+                                <label>Выберите роль</label>
+                                <select name="role" class="form-control">
+                                    @foreach($roles as $id => $role)
                                         <option
-                                            value="{{ $role->id }}" {{ $role->id == old('role_id') ? 'selected' : '' }}>
+                                            value="{{ $id }}" {{ $id == old('role') ? 'selected' : '0' }}>
                                             {{ $role }}
                                         </option>
                                     @endforeach
                                 </select>
+                                @error('role')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <input type="submit" class="btn btn-primary" value="Добавить">
                         </form>
