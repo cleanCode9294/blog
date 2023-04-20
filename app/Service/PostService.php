@@ -43,6 +43,7 @@ class PostService
             }
 
             if (isset($data['preview_image'])) {
+                Storage::disk('public')->delete('/images', $post['preview_image']);
                 $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
             }
             if (isset($data['main_image'])) {

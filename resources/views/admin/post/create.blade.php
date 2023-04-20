@@ -73,7 +73,7 @@
                                 @enderror
                             </div>
                             <div class="form-group w-50">
-                                <label>Select</label>
+                                <label>Категории</label>
                                 <select name="category_id" class="form-control">
                                     @foreach($categories as $category)
                                         <option
